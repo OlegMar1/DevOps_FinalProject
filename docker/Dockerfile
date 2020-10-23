@@ -1,14 +1,8 @@
-FROM tomcat:8.0-alpine
+FROM tomcat:8.0
 
 MAINTAINER oleh
 
-RUN rm -f /usr/local/tomcat/conf/tomcat-users.xml
-RUN apt-get install haveged
-
-COPY tomcat-users.xml /usr/local/tomcat/conf/
-COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
-COPY context.xml /usr/local/tomcat/webapps/host-manager/META-INF/
-COPY maze-wars.war /usr/local/tomcat/webapps/maze-wars.war
+COPY maze-wars.war /usr/local/tomcat/webapps/
 
 
 EXPOSE 8080
