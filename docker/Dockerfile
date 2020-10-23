@@ -1,13 +1,5 @@
-FROM tomcat:9.0-alpine
-
-MAINTAINER oleh
-
-RUN rm -f /usr/local/tomcat/conf/tomcat-users.xml
-
-COPY tomcat-users.xml /usr/local/tomcat/conf/
-COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
-COPY context.xml /usr/local/tomcat/webapps/host-manager/META-INF/
-COPY maze-wars.war /usr/local/tomcat/webapps/maze-wars.war
-
+FROM tomcat:8.5.35-jre10
 
 EXPOSE 8080
+CMD chmod +x /usr/local/tomcat/bin/catalina.sh
+CMD ["catalina.sh", "run"]
