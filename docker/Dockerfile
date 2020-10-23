@@ -3,6 +3,7 @@ FROM tomcat:8.0-alpine
 MAINTAINER oleh
 
 RUN rm -f /usr/local/tomcat/conf/tomcat-users.xml
+RUN apt-get install haveged
 
 COPY tomcat-users.xml /usr/local/tomcat/conf/
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
