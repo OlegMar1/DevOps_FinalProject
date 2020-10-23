@@ -3,7 +3,7 @@ FROM tomcat:9.0-alpine
 MAINTAINER oleh
 
 RUN rm -f /usr/local/tomcat/conf/tomcat-users.xml
-RUN cat $JAVA_HOME/jre/lib/security/java.security
+RUN ls -lsa $JAVA_HOME/jre/lib/security
 COPY tomcat-users.xml /usr/local/tomcat/conf/
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 COPY context.xml /usr/local/tomcat/webapps/host-manager/META-INF/
