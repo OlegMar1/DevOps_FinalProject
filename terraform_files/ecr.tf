@@ -2,7 +2,7 @@ module "ecr" {
 
   source = "lgallard/ecr/aws"
 
-  name   = "mazewars"
+  name   = "maze-wars"
 
   # Tags
   image_tag_mutability = "MUTABLE"
