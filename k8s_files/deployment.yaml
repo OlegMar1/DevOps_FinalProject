@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maze-wars-deployment
+  labels:
+    env: prod
+    app: maze-wars-application
+    owner: OlehMykhasiv
+spec:
+  selector:
+    matchLabels:
+      project: maze-wars
+  template:
+    metadata:
+      labels:
+        project: maze-wars
+    spec:
+      containers:
+        - name : tomcat-maze-wars
+          image: 130174258046.dkr.ecr.eu-west-2.amazonaws.com/maze-wars:latest
+          ports:
+            - containerPort: 8080
+        - name : nginx
+          image: nginx
+          ports:
+            - containerPort: 80
