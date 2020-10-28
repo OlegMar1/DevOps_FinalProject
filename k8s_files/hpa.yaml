@@ -1,6 +1,6 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
-metedata:
+metadata:
   name: autoscaling
   labels:
     env: prod
