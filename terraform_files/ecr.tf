@@ -6,8 +6,8 @@ variable "ecr_names" {
 module "ecr" {
 
   source = "lgallard/ecr/aws"
-  count = length(var.ecr_names)
-  name   = var.ecr_names[count.index]
+  for_each = toset(var.ecr_names)
+  name = each.value
 
   # Tags
   image_tag_mutability = "MUTABLE"
