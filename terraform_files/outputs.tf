@@ -27,8 +27,3 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = local.cluster_name
 }
-
-output "uri" {
-  description = "uri for ecr"
-  value       = module.ecr.repository_url
-}
