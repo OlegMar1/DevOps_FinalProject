@@ -1,24 +1,13 @@
-module "ecr" {
-
-  source = "lgallard/ecr/aws"
-
-  name   = "maze-wars"
-
-  # Tags
-  image_tag_mutability = "MUTABLE"
-  tags = {
-    Owner       = "Oleh"
-    Environment = "dev"
-    Terraform   = true
-  }
-
+variable "ecr_names" {
+  type = list("string")
+  default  =["maze-wars", "nginx"]
 }
 
 module "ecr" {
 
   source = "lgallard/ecr/aws"
-
-  name   = "nginx"
+  count = length(var.ecr_names)
+  name   = var.ecr_names[count.index]
 
   # Tags
   image_tag_mutability = "MUTABLE"
