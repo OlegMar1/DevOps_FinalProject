@@ -7,6 +7,11 @@ metadata:
     app: maze-wars-application
     owner: OlehMykhasiv
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 0
   selector:
     matchLabels:
       project: maze-wars
@@ -22,6 +27,10 @@ spec:
             requests:
               memory: 250Mi
               cpu: "200m"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
         - name : nginx
           image: 130174258046.dkr.ecr.eu-west-2.amazonaws.com/nginx:latest
           resources:
