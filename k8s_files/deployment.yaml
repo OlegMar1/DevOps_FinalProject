@@ -33,9 +33,3 @@ spec:
             httpGet:
               path: /
               port: 8080
-        - name : nginx
-          image: 130174258046.dkr.ecr.eu-west-2.amazonaws.com/nginx:latest
-          resources:
-            requests:
-              memory: 100Mi
-              cpu: "100m"
