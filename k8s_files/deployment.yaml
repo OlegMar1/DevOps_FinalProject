@@ -7,6 +7,7 @@ metadata:
     app: maze-wars-application
     owner: OlehMykhasiv
 spec:
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -25,6 +26,13 @@ spec:
           image: 130174258046.dkr.ecr.eu-west-2.amazonaws.com/maze-wars:latest
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+              successThreshold: 1
           resources:
             requests:
               memory: 1000Mi
