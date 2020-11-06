@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: maze-wars-deployment
@@ -7,6 +7,11 @@ metadata:
     app: maze-wars-application
     owner: OlehMykhasiv
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       project: maze-wars
